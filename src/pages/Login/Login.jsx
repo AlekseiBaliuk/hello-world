@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "bootstrap-4-react";
 import "../../App.css";
-import { login, isLoggedIn } from "../../firebase";
+import { useAuth } from "../../firebase";
 import Header from "../../components/Header/Header";
 import { Navigate } from "react-router-dom";
 
 const Login = () => {
   const [user, setUser] = useState(null);
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();

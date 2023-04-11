@@ -1,5 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const variants = {
   open: {
@@ -20,19 +21,21 @@ const variants = {
 
 const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 
-export const MenuItem = ({ id, text }) => {
+export const MenuItem = ({ id, text, to }) => {
   const style = { border: `2px solid ${colors[id]}` };
   return (
-    <motion.li
-      className="menuItem"
-      variants={variants}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <div className="icon-placeholder" style={style} />
-      <div className="text-placeholder" style={style}>
-        {text}
-      </div>
-    </motion.li>
+    <Link to={to}>
+      <motion.li
+        className="menuItem"
+        variants={variants}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <div className="icon-placeholder" style={style} />
+        <div className="text-placeholder" style={style}>
+          {text}
+        </div>
+      </motion.li>
+    </Link>
   );
 };

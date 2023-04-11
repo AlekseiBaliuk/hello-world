@@ -2,8 +2,6 @@
     display: flex;
 }
 
-.wrapper {
-    /* background-color:#ccc; */
-    width: 70vw;
-    height: 100vh;
+.title {
+    padding: 10px;
 }

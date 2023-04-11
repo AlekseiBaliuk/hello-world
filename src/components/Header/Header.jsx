@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styles from "./Header.module.css";
-import { Button } from "bootstrap-4-react/lib/components";
-import { isLoggedIn, logout } from "../../firebase";
-import { Link, Navigate, Outlet, useLocation } from "react-router-dom";
+import { Button } from "bootstrap-4-react";
+import { useAuth } from "../../firebase";
+import { Link, Navigate, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const { logout, isLoggedIn } = useAuth();
   const [user, setUser] = useState(isLoggedIn);
   const location = useLocation();
 
@@ -38,10 +39,12 @@ const Header = () => {
           )}
         </div>
       </div>
-      <Outlet />
-      {!user && location.pathname === "/user" && (
-        <Navigate to="/" replace={true} />
-      )}
+      {user &&
+        (location.pathname === "/user" ||
+          location.pathname === "/user/edit" ||
+          location.pathname === "/user/trip") && (
+          <Navigate to="/" replace={true} />
+        )}
     </>
   );
 };

@@ -1,11 +1,14 @@
 import React from "react";
 import { Form, Button } from "bootstrap-4-react";
 import "../../App.css";
-import { addToDb, signup, isLoggedIn } from "../../firebase";
+import { addToDb, useAuth } from "../../firebase";
 import Header from "../../components/Header/Header";
 import { Navigate } from "react-router-dom";
+import PhoneForm from "../../components/PhoneForm/PhoneForm";
 
 const Register = () => {
+  const { signup, signInWithGoogle, isLoggedIn, signInWithFacebook } =
+    useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,17 +21,14 @@ const Register = () => {
       email,
       password,
     };
-    // console.log(name, email, password);
 
-    const user = await signup(email, password);
+    await signup(email, password);
     addToDb(userData);
-    // setUser(user);
   };
 
   return (
     <>
       <Header />
-
       <div className="App">
         <Form onSubmit={handleSubmit}>
           <Form.Group>
@@ -54,11 +54,26 @@ const Register = () => {
               placeholder="Password"
             />
           </Form.Group>
-          <Button primary type="submit">
+          <Button className="mr-3 mb-3" primary type="submit">
             Submit
+          </Button>
+
+          <Button
+            className="mr-3 mb-3"
+            primary
+            type="button"
+            onClick={signInWithGoogle}
+          >
+            Sign in with Google
+          </Button>
+
+          <Button primary type="button" onClick={signInWithFacebook}>
+            Sign in with Facebook
           </Button>
         </Form>
       </div>
+
+      <PhoneForm />
 
       {isLoggedIn && <Navigate to="/user" replace={true} />}
     </>

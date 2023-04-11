@@ -1,0 +1,33 @@
+.editWrapper {
+    padding-left: 50px;
+}
+
+.editList {
+    padding: 20px 0;
+    width: 350px;
+    border-bottom: 1px solid #ccc;
+}
+
+.editSelect {
+    padding: 5px;
+    margin: 0 10px;
+}
+
+.editRole {
+    display: flex;
+    align-items: center;
+}
+
+.editButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 60px;
+    opacity: 0.8;
+    transition: all 250ms linear;
+}
+
+.editButton:hover {
+    opacity: 1;
+}

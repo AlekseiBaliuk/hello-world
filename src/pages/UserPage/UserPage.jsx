@@ -6,6 +6,7 @@ import { MenuToggle } from "../../components/Menu/MenuToggle";
 import { Navigation } from "../../components/Menu/Navigation";
 import styles from "./UserPage.module.css";
 import Header from "../../components/Header/Header";
+import { Outlet } from "react-router-dom";
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -46,8 +47,9 @@ const UserPage = () => {
           <Navigation />
           <MenuToggle toggle={() => toggleOpen()} />
         </motion.nav>
-        <div className={styles.wrapper}>
-          <p>sdkgfhadfkgadfgadfgdfg</p>
+        <div>
+          <h4 className={styles.title}>Dashboard</h4>
+          <Outlet />
         </div>
       </div>
     </>
