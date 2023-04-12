@@ -1,5 +1,6 @@
 .editWrapper {
     padding-left: 50px;
+    overflow: scroll;
 }
 
 .editList {

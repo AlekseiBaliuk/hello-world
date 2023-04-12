@@ -5,8 +5,6 @@ import { Button } from "bootstrap-4-react/lib/components";
 
 const EditUser = () => {
   const [usersData, setUsersData] = useState([]);
-  // const [disabled, setDisabled] = useState(true);
-  // const [role, setRole] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -88,7 +86,7 @@ const EditUser = () => {
                   className={styles.editSelect}
                   disabled={user.disabled}
                   onChange={(e) => handleChange(e, user.id)}
-                  defaultValue=""
+                  value={user.role}
                 >
                   <option value="Водій">Водій</option>
                   <option value="Пасажир">Пасажир</option>

@@ -200,6 +200,7 @@ export const update = async (userRole, id) => {
     const userRef = doc(db, "users", id);
     await updateDoc(userRef, { role: userRole });
     toast.info("Document updated successfully");
+    getDoc()
   } catch (e) {
     toast.info("Error adding document: ", e);
   }
