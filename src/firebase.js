@@ -64,7 +64,7 @@ export const useAuth = () => {
       setIsLoggedIn(true);
       return userCred.user;
     } catch (error) {
-      toast.info(error);
+      toast.info("Error, please try again");
       setIsLoggedIn(false);
     }
   };
@@ -200,7 +200,7 @@ export const update = async (userRole, id) => {
     const userRef = doc(db, "users", id);
     await updateDoc(userRef, { role: userRole });
     toast.info("Document updated successfully");
-    getDoc()
+    getDoc();
   } catch (e) {
     toast.info("Error adding document: ", e);
   }
